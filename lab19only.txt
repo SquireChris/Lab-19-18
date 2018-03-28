@@ -8,6 +8,7 @@
 *******************************************************************************/
 #include <iostream>
 #include <iomanip>
+#include <cstring>
 using namespace std;
 /******************************************************************************
  * --------------------------------------------------------------------------
@@ -15,11 +16,11 @@ using namespace std;
  * 		remaining and the average number of eggs input.
  * --------------------------------------------------------------------------
  * INPUTS:-
- *     		sheepAge : age of sheep 
+ *     		sheepAge : age of sheep
  *
  * OUTPUTS:-
  * 			avgAge   : average sheep ages that the user enters
- * 			ageType  : sheep age indicator 
+ * 			ageType  : sheep age indicator
  ******************************************************************************/
 int main()
 {
@@ -43,8 +44,8 @@ int main()
  int   sheepAge    ;    // IN         - number of eggs
  int   sheepAgeCount;  	// CALC       - increment number of sheep ages
  float avgAge;		    // CALC & OUT - average of total sheep ages
- int   totalAge;        // CALC  - total of sheep ages
- char  ageType [25]; 	// OUT - indicator of sheep age
+ int   totalAge;        // CALC       - total of sheep ages
+ char  ageType [25]; 	// OUT        - indicator of sheep age
  int   testCount;		// CALC       - increment number of tests
 
  // OUTPUT - Class Heading
@@ -61,65 +62,111 @@ int main()
  /****************************************************************************
  * INPUT - asks user to input the sheep age, a negative number will result the
  * 		 program exit.
- *      "Enter the number of eggs gathered:  "
+ *      "Enter in the sheep ages, input -1 to exit"
  ****************************************************************************/
  	 for (testCount = 1; testCount <= 3; testCount = testCount + 1)
  	 {
 		 cout << "TEST #" << testCount << ":" << endl;
 		 cout << "Welcome to Buddy's Average Sheep Age Calculator!" << endl;
 		 cout << endl;
-
-		 cout << right << setw(39) << "Enter in the sheep ages, input -1 to exit";
-		 cout << "Sheep Age: ";
-		 cin  >> sheepAge;
-		 cin.ignore(1000,'\n');
-
+		 cout << "Enter in the sheep ages, input -1 to exit";
+		 cout << endl;
 
 /*****************************************************************************
-* PROCESSING - calculates the 
+* PROCESSING - calculates the average age and age type
 ******************************************************************************/
-		
+		 do
+		 {
+			 cout << "Sheep Age: ";
+			 cin  >> sheepAge;
 
 
-		 while (sheepAge >= 0 )
-		  {
-			   
+			 if(sheepAge > 9)
+			 {
+				 cout << "*** Invalid sheep age - please input a value less ";
+				 cout << "than or equal to 9!" << endl << endl;
+			 }
 
-			   cout << right       << setw(13);
-			   cout << "You have " << << " dozen " << ;
-			   cout << " eggs.";
 
-			   cout << endl << endl << right << setw(39);
-			   cout << "Enter the number of eggs gathered: ";
-			   
-			   cin.ignore(1000,'\n');
+		 }while (sheepAge > 9);
 
-			   
+
+		sheepAgeCount = 0;
+		totalAge = 0;
+		while (sheepAge >= 0 )
+		{
+			sheepAgeCount = sheepAgeCount + 1;
+			totalAge = totalAge + sheepAge;
+
+
+			do
+			{
+				cout << "Sheep Age: ";
+				cin  >> sheepAge;
+
+				if(sheepAge > 9)
+				{
+					cout << "*** Invalid sheep age - please input a value less";
+					cout << "than or equal to 9!" << endl << endl;
+				}
+
+			}while (sheepAge > 9);
+
+		} //end while
+
+
+	      if (sheepAge < 0 )
+	      {
+	    	 cout << endl;
+			 avgAge = float(totalAge) / sheepAgeCount;
+
+				if ( avgAge > 6)
+				{
+					strncpy(ageType, "AGING!", 25);
+					cout << setprecision(1) << fixed;
+					cout << "On average your sheep are " << avgAge;
+					cout << " years old!" << endl;
+					cout << "In general, your sheep are " << ageType;
+					cout << " - time to breed!" << endl << endl;
+					cout << endl << endl;
+				}
+
+				if ( avgAge >= 4 )
+				{
+					strncpy(ageType, "MIDDLE-AGED!", 25);
+					cout << setprecision(1) << fixed;
+					cout << "On average your sheep are " << avgAge;
+					cout << " years old!" << endl;
+					cout << "In general, your sheep are " << ageType;
+					cout << endl << endl;
+					cout << endl << endl;
+				}
+
+				if( avgAge <= 3)
+				{
+					strncpy(ageType, "BABIES!", 25);
+					cout << setprecision(1) << fixed;
+					cout << "On average your sheep are " << avgAge;
+					cout << " years old!" << endl;
+					cout << "In general, your sheep are " << ageType;
+					cout << endl << endl;
+					cout << endl << endl;
+				}
+			}
 
 		  }
 
+
 /*****************************************************************************
-* OUTPUT - outputs the average 
+* OUTPUT - outputs the average
 ******************************************************************************/
 
-		 if(eggCount != 0)
-		 {
 
-		 cout << endl << "TOTALS:" << endl;
-		 avgEggs = float(totalEggs) / eggCount;
-		 dozenCount = totalEggs / 12;
-		 remainingCount = totalEggs % 12;
 
-		 cout << setprecision(1) << fixed;
-		 cout << right << setw(15);
-		 cout << "On average "   << avgEggs << " eggs have been gathered.";
 
-		 cout << endl          << setw(15);
-		 cout << "A total of " << dozenCount << " dozen and " << remainingCount;
-		 cout << " eggs have been gathered!" << endl << endl << endl;
-
-		 }
- 	 }
+	  cout << "Thank you for using Buddy's Average Sheep Age Calculator!" << endl;
+      cout << "Have a great day!! :)";
       return 0;
+
 }
 
