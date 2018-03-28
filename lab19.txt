@@ -69,43 +69,37 @@ int main()
 		 cout << "Welcome to Buddy's Average Sheep Age Calculator!" << endl;
 		 cout << endl;
 
-		 cout << right << setw(39) << "Enter in : ";
-		 cin  >> ;
+		 cout << right << setw(39) << "Enter in the sheep ages, input -1 to exit";
+		 cout << "Sheep Age: ";
+		 cin  >> sheepAge;
 		 cin.ignore(1000,'\n');
 
 
 /*****************************************************************************
-* PROCESSING - calculates the increment of number of eggs
-* 			 program will stop when negative age is entered
+* PROCESSING - calculates the 
 ******************************************************************************/
-		 dozenCount = 0;
-		 remainingCount = 0;
-		 eggCount = 0;
-		 totalEggs = 0;
+		
 
 
-		 while (numEggs >= 0 )
+		 while (sheepAge >= 0 )
 		  {
-			   dozenEggs = numEggs / 12;
-			   totalEggs = float(totalEggs) + numEggs;
-			   remainingEggs = numEggs % 12;
+			   
 
 			   cout << right       << setw(13);
-			   cout << "You have " << dozenEggs << " dozen " << remainingEggs;
+			   cout << "You have " << << " dozen " << ;
 			   cout << " eggs.";
 
 			   cout << endl << endl << right << setw(39);
 			   cout << "Enter the number of eggs gathered: ";
-			   cin  >> numEggs;
+			   
 			   cin.ignore(1000,'\n');
 
-			   eggCount = eggCount + 1;
+			   
 
 		  }
 
 /*****************************************************************************
-* OUTPUT - outputs the average number of eggs and total dozens and
-* 				remaining eggs
+* OUTPUT - outputs the average 
 ******************************************************************************/
 
 		 if(eggCount != 0)
